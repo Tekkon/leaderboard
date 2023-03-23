@@ -6,9 +6,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 gem 'rails', '~> 6.1.6.1'
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'connection_pool'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.3'
-gem 'connection_pool'
 gem 'hiredis'
 gem 'redis', '~> 4.0'
 
