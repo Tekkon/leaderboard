@@ -2,12 +2,24 @@
 
 # Updates user scores every second.
 class UserScoreUpdater
+  NR_USERS = 100
+  SCORE_CHANGE = 1000
+  MAX_SCORE = 1_000_000
+  MIN_SCORE = 150
+
   def self.perform
     loop do
-      users = User.take(100)
+      users = User.take(NR_USERS)
 
       User.transaction do
-        users.each { |user| user.update!(score: rand(150..1_000_000)) }
+        users.each do |user|
+          multiplier = rand(2) == 0 ? -1 : 1
+          new_score = user.score + SCORE_CHANGE * multiplier
+          new_score = MIN_SCORE if new_score < MIN_SCORE
+          new_score = MAX_SCORE if new_score > MAX_SCORE
+
+          user.update!(score: new_score)
+        end
       end
 
       sleep 1.second
