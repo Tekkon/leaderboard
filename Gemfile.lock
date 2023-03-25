@@ -40,6 +40,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.3)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (6.1.6.1)
       activesupport (= 6.1.6.1)
       globalid (>= 0.3.6)
@@ -160,8 +165,6 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     parallel (1.22.1)
-    parallel_tests (4.2.0)
-      parallel
     parser (3.2.1.1)
       ast (~> 2.4.1)
     pdf-reader (2.11.0)
@@ -332,6 +335,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  active_storage_validations
   bootsnap (>= 1.4.2)
   byebug
   connection_pool
@@ -345,7 +349,6 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.2)
   mock_redis
-  parallel_tests
   pdf-reader
   pg (>= 0.18, < 2.0)
   pry-byebug

@@ -6,6 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 gem 'rails', '~> 6.1.6.1'
+
+gem 'active_storage_validations'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'connection_pool'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -17,7 +19,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv'
-  gem 'parallel_tests'
   gem 'pry-byebug'
   gem 'pry-rails', '~> 0.3.4'
   gem 'rswag-specs'
