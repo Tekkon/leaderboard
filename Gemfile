@@ -47,7 +47,6 @@ group :test do
   gem 'rspec-its'
   gem 'rspec_junit_formatter'
   gem 'rspec-rails'
-  gem 'rspec-sidekiq'
   gem 'rspec-sonarqube-formatter', '~> 1.5', require: false
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
