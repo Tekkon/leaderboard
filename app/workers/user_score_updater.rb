@@ -2,12 +2,14 @@
 
 # Updates user scores every second.
 class UserScoreUpdater
+  include Sidekiq::Worker
+
   NR_USERS = 100
   SCORE_CHANGE = 1000
   MAX_SCORE = 1_000_000
   MIN_SCORE = 150
 
-  def self.perform
+  def perform
     loop do
       users = User.take(NR_USERS)
 
