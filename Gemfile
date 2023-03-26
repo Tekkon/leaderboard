@@ -17,6 +17,8 @@ gem 'puma', '~> 4.3'
 gem 'hiredis'
 gem 'redis', '~> 4.0'
 gem 'sass-rails'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
