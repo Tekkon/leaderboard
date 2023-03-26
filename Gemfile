@@ -8,12 +8,15 @@ ruby '3.0.2'
 gem 'rails', '~> 6.1.6.1'
 
 gem 'active_storage_validations'
+gem 'activeadmin'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'connection_pool'
+gem 'devise'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.3'
 gem 'hiredis'
 gem 'redis', '~> 4.0'
+gem 'sass-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
