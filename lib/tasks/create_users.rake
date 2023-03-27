@@ -5,7 +5,7 @@ require 'faker'
 desc 'create users'
 task create_users: :environment do
   NR_CORES = Etc.nprocessors
-  NR_USERS = 150_000_000 - User.count
+  NR_USERS = 150_000_000
   NR_PART = NR_USERS / NR_CORES
   PARTITIONS = (1..NR_CORES).map { |i| ((i - 1) * NR_PART + 1)..(NR_PART * i) }
   MAX_COUNTRY_ID = Country.count
@@ -29,14 +29,9 @@ task create_users: :environment do
 
         if records.count >= BATCH_SIZE
           User.insert_all(records)
-          records = []
           puts "#{User.count} users created..."
+          records = []
         end
-      end
-
-      unless records.empty?
-        User.insert_all(records)
-        puts "#{User.count} users created..."
       end
     end
   end
