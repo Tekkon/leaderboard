@@ -6,6 +6,10 @@ ActiveAdmin.register User do
   filter :updated_at
 
   controller do
+    def scoped_collection
+      super.includes(:country)
+    end
+
     def apply_sorting(chain)
       chain.order(score: :desc)
     end
