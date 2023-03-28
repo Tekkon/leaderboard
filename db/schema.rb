@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_26_055504) do
+ActiveRecord::Schema.define(version: 2023_03_27_082104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,17 +48,145 @@ ActiveRecord::Schema.define(version: 2023_03_26_055504) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigserial "id", null: false
     t.string "name", null: false
-    t.bigint "country_id"
     t.integer "score", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["country_id", "score"], name: "index_users_on_country_id_and_score"
+    t.bigint "country_id"
     t.index ["country_id"], name: "index_users_on_country_id"
-    t.index ["name"], name: "index_users_on_name"
-    t.index ["score"], name: "index_users_on_score"
+  end
+
+  create_table "users_1", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_1_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_1_country_id_idx"
+    t.index ["score"], name: "index_users_1_on_score", order: :desc
+  end
+
+  create_table "users_10", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_10_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_10_country_id_idx"
+    t.index ["score"], name: "index_users_10_on_score", order: :desc
+  end
+
+  create_table "users_2", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_2_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_2_country_id_idx"
+    t.index ["score"], name: "index_users_2_on_score", order: :desc
+  end
+
+  create_table "users_3", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_3_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_3_country_id_idx"
+    t.index ["score"], name: "index_users_3_on_score", order: :desc
+  end
+
+  create_table "users_4", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_4_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_4_country_id_idx"
+    t.index ["score"], name: "index_users_4_on_score", order: :desc
+  end
+
+  create_table "users_5", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_5_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_5_country_id_idx"
+    t.index ["score"], name: "index_users_5_on_score", order: :desc
+  end
+
+  create_table "users_6", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_6_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_6_country_id_idx"
+    t.index ["score"], name: "index_users_6_on_score", order: :desc
+  end
+
+  create_table "users_7", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_7_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_7_country_id_idx"
+    t.index ["score"], name: "index_users_7_on_score", order: :desc
+  end
+
+  create_table "users_8", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_8_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_8_country_id_idx"
+    t.index ["score"], name: "index_users_8_on_score", order: :desc
+  end
+
+  create_table "users_9", primary_key: ["id", "score"], force: :cascade do |t|
+    t.bigint "id", default: -> { "nextval('users_id_seq'::regclass)" }, null: false
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id", "score"], name: "index_users_9_on_country_id_and_score", order: { score: :desc }
+    t.index ["country_id"], name: "users_9_country_id_idx"
+    t.index ["score"], name: "index_users_9_on_score", order: :desc
   end
 
   add_foreign_key "users", "countries"
+  add_foreign_key "users_1", "countries"
+  add_foreign_key "users_10", "countries"
+  add_foreign_key "users_2", "countries"
+  add_foreign_key "users_3", "countries"
+  add_foreign_key "users_4", "countries"
+  add_foreign_key "users_5", "countries"
+  add_foreign_key "users_6", "countries"
+  add_foreign_key "users_7", "countries"
+  add_foreign_key "users_8", "countries"
+  add_foreign_key "users_9", "countries"
 end

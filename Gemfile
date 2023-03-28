@@ -10,6 +10,7 @@ gem 'rails', '~> 6.1.6.1'
 gem 'active_storage_validations'
 gem 'activeadmin'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'composite_primary_keys'
 gem 'connection_pool'
 gem 'devise'
 gem 'pg', '>= 0.18', '< 2.0'
