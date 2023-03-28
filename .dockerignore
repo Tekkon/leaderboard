@@ -1,0 +1,8 @@
+.git
+.gitignore
+tmp
+log
+spec
+config/credentials.yml.enc
+READMY.md
+.env
