@@ -36,9 +36,6 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/leaderboard-382013/leaderboard:latest']
 
-# - name: 'docker/compose:1.26.2'
-#   args: ['up', '-d']
-
 secrets:
 - kmsKeyName: projects/leaderboard-382013/locations/us-central1/keyRings/leaderboard/cryptoKeys/db_pwd_key
   secretEnv:
