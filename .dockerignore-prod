@@ -5,4 +5,3 @@ log
 spec
 READMY.md
 .env
-config/credentials.yml.enc
