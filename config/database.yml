@@ -17,6 +17,11 @@ test:
   database: leaderboard_test
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  timeout: 5000
+  pool: <%= ENV['POSTGRES_POOL'] || 5 %>
   database: leaderboard_production
-  socket: leaderboard-382013:us-central1:leaderboard
+  username: <%= ENV['POSTGRES_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: "/cloudsql/leaderboard-382013:us-central1:leaderboard"

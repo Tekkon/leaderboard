@@ -17,14 +17,44 @@ steps:
 # Build image with tag 'latest' and pass decrypted Rails DB password as argument
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag', 'gcr.io/leaderboard-382013/leaderboard:latest',
-         '--build-arg', 'DB_PWD', '.']
+         '--build-arg', 'DB_PWD',
+         '--build-arg', 'POSTGRES_POOL=${_POSTGRES_POOL}',
+         '--build-arg', 'POSTGRES_USERNAME=${_POSTGRES_USERNAME}',
+         '--build-arg', 'REDIS_URL_SIDEKIQ=${_REDIS_URL_SIDEKIQ}',
+         '--build-arg', 'REDIS_PORT_RAILS=${_REDIS_PORT_RAILS}',
+         '--build-arg', 'REDIS_DB_RAILS=${_REDIS_DB_RAILS}',
+         '--build-arg', 'REDIS_CONNECTION_POOL=${_REDIS_CONNECTION_POOL}',
+         '--build-arg', 'REDIS_TIMEOUT=${_REDIS_TIMEOUT}',
+         '--build-arg', 'SIDEKIQ_USER=${_SIDEKIQ_USER}',
+         '--build-arg', 'SIDEKIQ_PASSWORD=${_SIDEKIQ_PASSWORD}',
+         '--build-arg', 'ADMIN_PASSWORD=${_ADMIN_PASSWORD}',
+         '--build-arg', 'REDIS_PASSWORD=${_REDIS_PASSWORD}',
+         '.']
   secretEnv: ['DB_PWD']
 
 # Push new image to Google Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/leaderboard-382013/leaderboard:latest']
 
+# - name: 'docker/compose:1.26.2'
+#   args: ['up', '-d']
+
 secrets:
 - kmsKeyName: projects/leaderboard-382013/locations/us-central1/keyRings/leaderboard/cryptoKeys/db_pwd_key
   secretEnv:
     DB_PWD: CiQAv4eTx4kF1T/5tspwNOrmVMRCtG9vPaMTyms7iL82VGk66m0SMQBZVmmGDIv0GItzjuYOrxMzyz8HJiQcD5JuWaKJC8AGZll2SmF2KnFqM9XxRo5uO3Q=
+
+substitutions:
+  _POSTGRES_POOL: '15'
+  _POSTGRES_USERNAME: 'postgres'
+  _ADMIN_PASSWORD: $ADMIN_PASSWORD
+  _REDIS_URL_SIDEKIQ: 'redis://default:${REDIS_PASSWORD}@redis-13117.c279.us-central1-1.gce.cloud.redislabs.com:13117'
+  _REDIS_PORT_RAILS: '13117'
+  _REDIS_DB_RAILS: '1'
+  _REDIS_CONNECTION_POOL: '5'
+  _REDIS_TIMEOUT: '5'
+  _SIDEKIQ_USER: 'sidekiq'
+  _SIDEKIQ_PASSWORD: $SIDEKIQ_PASSWORD
+  _REDIS_PASSWORD: $REDIS_PASSWORD
+options:
+  dynamic_substitutions: true
