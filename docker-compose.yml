@@ -28,6 +28,7 @@ services:
       - .env
 
   web:
+    image: nikitaluft89/leaderboard
     build: .
     volumes:
       - .:/myapp
